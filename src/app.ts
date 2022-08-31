@@ -4,8 +4,9 @@ import helmet from 'helmet';
 import cors from 'cors';
 
 import * as middlewares from './middlewares';
-import api from './api';
 import MessageResponse from '@interfaces/MessageResponse';
+
+import v1 from './api/v1';
 
 require('dotenv').config();
 
@@ -18,11 +19,11 @@ app.use(express.json());
 
 app.get<{}, MessageResponse>('/', (req, res) => {
   res.json({
-    message: '🦄🌈✨👋🌎🌍🌏✨🌈🦄',
+    message: 'Welcome to TODOS API.',
   });
 });
 
-app.use('/api/v1', api);
+app.use('/api/v1', v1);
 
 app.use(middlewares.notFound);
 app.use(middlewares.errorHandler);
