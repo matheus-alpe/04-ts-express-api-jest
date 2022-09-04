@@ -26,5 +26,24 @@
     "headers": [],
     "params": [],
     "tests": []
+  },
+  {
+    "_id": "f36fb6f4-4270-498e-aa0f-ea51f80a66ed",
+    "colId": "9ddd7c78-9300-477c-aab8-bff6b6b777b1",
+    "containerId": "",
+    "name": "Create",
+    "url": "{{v1}}/todos",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-09-03T19:29:31.498Z",
+    "modified": "2022-09-04T18:56:28.093Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\r\n  \"content\": \"Learn typescript\"\r\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]

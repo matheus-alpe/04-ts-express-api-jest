@@ -5,7 +5,7 @@
     "default": true,
     "sortNum": 10000,
     "created": "2022-08-28T18:45:55.331Z",
-    "modified": "2022-08-31T23:11:32.549Z",
+    "modified": "2022-09-04T18:43:20.895Z",
     "data": [
       {
         "name": "host",
@@ -13,7 +13,7 @@
       },
       {
         "name": "v1",
-        "value": "{{host}}/api/v1/"
+        "value": "{{host}}/api/v1"
       }
     ]
   }

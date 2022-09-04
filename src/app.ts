@@ -8,8 +8,6 @@ import MessageResponse from '@interfaces/MessageResponse';
 
 import v1 from './api/v1';
 
-require('dotenv').config();
-
 const app = express();
 
 app.use(morgan('dev'));
