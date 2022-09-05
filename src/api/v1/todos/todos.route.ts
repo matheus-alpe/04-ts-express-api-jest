@@ -11,5 +11,6 @@ router.get('/', TodosController.findAll);
 router.get('/:id', validateRequest({ params: ParamsWithId }), TodosController.findOne);
 router.post('/', validateRequest({ body: Todo }), TodosController.createOne);
 router.put('/:id', validateRequest({ params: ParamsWithId, body: Todo }), TodosController.updateOne);
+router.delete('/:id', validateRequest({ params: ParamsWithId }), TodosController.deleteOne);
 
 export default router;

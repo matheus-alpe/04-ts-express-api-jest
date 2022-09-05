@@ -130,3 +130,35 @@ describe('PUT /api/v1/todos/:id', () => {
       });
   });
 });
+
+describe('DELETE /api/v1/todos/:id', () => {
+  it('responds with an invalid ObjectId error', (done) => {
+    request(app)
+      .delete('/api/v1/todos/asdasdasd')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(422, done);
+  });
+
+  it('responds with a not found error', (done) => {
+    request(app)
+      .delete('/api/v1/todos/63155a8b278a3b7410665b95')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(404, done);
+  });
+
+  it('responds with a 204 status code', (done) => {
+    request(app)
+      .delete(`/api/v1/todos/${id}`)
+      .expect(204, done);
+  });
+
+  it('responds with a not found error', (done) => {
+    request(app)
+      .get(`/api/v1/todos/${id}`)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(404, done);
+  });
+});

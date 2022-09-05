@@ -83,5 +83,19 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "2db78d4b-ee58-4c16-8ae5-2a62ee889f64",
+    "colId": "9ddd7c78-9300-477c-aab8-bff6b6b777b1",
+    "containerId": "",
+    "name": "Delete One",
+    "url": "{{v1}}/todos/63155a8b278a3b7410665b95",
+    "method": "DELETE",
+    "sortNum": 50000,
+    "created": "2022-09-05T02:35:23.046Z",
+    "modified": "2022-09-05T02:35:36.180Z",
+    "headers": [],
+    "params": [],
+    "tests": []
   }
 ]
