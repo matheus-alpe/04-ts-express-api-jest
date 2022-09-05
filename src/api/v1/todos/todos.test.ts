@@ -64,6 +64,9 @@ describe('GET /api/v1/todos/:id', () => {
       .expect(200)
       .then((response) => {
         expect(response.body).toHaveProperty('_id');
+        expect(response.body).toHaveProperty('content');
+        expect(response.body).toHaveProperty('done');
+        expect(response.body.done).toBe(false);
       });
   });
 
@@ -81,5 +84,49 @@ describe('GET /api/v1/todos/:id', () => {
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(404, done);
+  });
+});
+
+describe('PUT /api/v1/todos/:id', () => {
+  it('responds with an invalid ObjectId error', (done) => {
+    request(app)
+      .put('/api/v1/todos/asdasdasd')
+      .set('Accept', 'application/json')
+      .send({
+        content: 'Learn typescript',
+        done: true,
+      })
+      .expect('Content-Type', /json/)
+      .expect(422, done);
+  });
+
+  it('responds with a not found error', (done) => {
+    request(app)
+      .put('/api/v1/todos/63155a8b278a3b7410665b95')
+      .set('Accept', 'application/json')
+      .send({
+        content: 'Learn typescript',
+        done: true,
+      })
+      .expect('Content-Type', /json/)
+      .expect(404, done);
+  });
+
+  it('responds with a single todo', async () => {
+    request(app)
+      .put(`/api/v1/todos/${id}`)
+      .set('Accept', 'application/json')
+      .send({
+        content: 'Learn typescript',
+        done: true,
+      })
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).toHaveProperty('_id');
+        expect(response.body).toHaveProperty('content');
+        expect(response.body).toHaveProperty('done');
+        expect(response.body.done).toBe(true);
+      });
   });
 });

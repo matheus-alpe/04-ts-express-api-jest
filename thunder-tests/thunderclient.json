@@ -64,5 +64,24 @@
       "form": []
     },
     "tests": []
+  },
+  {
+    "_id": "95cde05d-5058-4db8-9ede-2c278f686a8b",
+    "colId": "9ddd7c78-9300-477c-aab8-bff6b6b777b1",
+    "containerId": "",
+    "name": "Update One",
+    "url": "{{v1}}/todos/63155a8b278a3b7410665b95",
+    "method": "PUT",
+    "sortNum": 40000,
+    "created": "2022-09-05T02:31:35.989Z",
+    "modified": "2022-09-05T02:32:35.457Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n  \"content\": \"Learn typescript\",\n  \"done\": true\n}",
+      "form": []
+    },
+    "tests": []
   }
 ]
