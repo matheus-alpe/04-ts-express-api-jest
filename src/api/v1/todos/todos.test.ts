@@ -23,6 +23,7 @@ describe('GET /api/v1/todos', () => {
   });
 });
 
+let id = '';
 describe('POST /api/v1/todos', () => {
   it('responds with an error if the todo is invalid', async () => {
     request(app)
@@ -48,8 +49,37 @@ describe('POST /api/v1/todos', () => {
       .expect('Content-Type', /json/)
       .expect(201)
       .then((response) => {
-        expect(response.body).toHaveProperty('insertedId');
+        expect(response.body).toHaveProperty('_id');
+        id = response.body._id;
       });
   });
 });
 
+describe('GET /api/v1/todos/:id', () => {
+  it('responds with a single todo', async () => {
+    request(app)
+      .get(`/api/v1/todos/${id}`)
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then((response) => {
+        expect(response.body).toHaveProperty('_id');
+      });
+  });
+
+  it('responds with an invalid ObjectId error', (done) => {
+    request(app)
+      .get('/api/v1/todos/asdasdasd')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(422, done);
+  });
+
+  it('responds with a not found error', (done) => {
+    request(app)
+      .get('/api/v1/todos/63155a8b278a3b7410665b95')
+      .set('Accept', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(404, done);
+  });
+});

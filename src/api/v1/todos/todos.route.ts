@@ -1,3 +1,4 @@
+import { ParamsWithId } from '../../../interfaces/ParamsWithId';
 import { Router } from 'express';
 import { validateRequest } from '../../../middlewares';
 import * as TodosController from './todos.controller';
@@ -7,6 +8,7 @@ const router = Router();
 
 
 router.get('/', TodosController.findAll);
+router.get('/:id', validateRequest({ params: ParamsWithId }), TodosController.findOne);
 router.post('/', validateRequest({ body: Todo }), TodosController.createOne);
 
 export default router;
